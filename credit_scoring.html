@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Credit Scoring — Uyên Nguyen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #fafafa; color: #1a1a1a; line-height: 1.7; font-size: 16px; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: sticky; top: 0;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid #e0e0e0;
+    padding: 0 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 56px; z-index: 100;
+  }
+  nav .logo { font-size: 15px; font-weight: 500; letter-spacing: -0.3px; }
+  nav .back { font-size: 14px; color: #888; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+  nav .back:hover { color: #111; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 60px 2rem 80px; }
+
+  /* Header */
+  .project-header { margin-bottom: 48px; }
+  .project-tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; margin-bottom: 16px; }
+  .project-header h1 { font-size: clamp(24px, 5vw, 38px); font-weight: 500; letter-spacing: -1px; line-height: 1.2; color: #111; margin-bottom: 16px; }
+  .project-header p { font-size: 17px; color: #555; max-width: 580px; }
+
+  /* Tags */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+  .tag { font-size: 12px; padding: 4px 12px; border: 0.5px solid #ddd; border-radius: 20px; color: #555; background: #fff; }
+
+  /* Links row */
+  .action-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 500; transition: all 0.15s; font-family: inherit; }
+  .btn-primary { background: #111; color: #fff; border: none; }
+  .btn-primary:hover { background: #333; }
+  .btn-outline { border: 0.5px solid #ccc; color: #333; background: transparent; }
+  .btn-outline:hover { border-color: #999; background: #f5f5f5; }
+
+  /* Video */
+  .video-section { margin-bottom: 48px; }
+  .video-wrap {
+    width: 100%; aspect-ratio: 16/9;
+    background: #f0f0f0; border-radius: 10px;
+    overflow: hidden; border: 0.5px solid #e8e8e8;
+  }
+  .video-wrap video, .video-wrap iframe { width: 100%; height: 100%; border: none; object-fit: cover; }
+  .video-caption { font-size: 13px; color: #999; margin-top: 10px; }
+
+  /* Divider */
+  hr { border: none; border-top: 0.5px solid #e8e8e8; margin: 40px 0; }
+
+  /* Sections */
+  .section { margin-bottom: 40px; }
+  .section h2 { font-size: 18px; font-weight: 500; color: #111; margin-bottom: 12px; }
+  .section p { font-size: 15px; color: #444; margin-bottom: 12px; line-height: 1.75; }
+
+  /* Model comparison table */
+  .model-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 16px; }
+  .model-table th { text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; color: #888; border-bottom: 0.5px solid #e0e0e0; padding: 8px 12px; }
+  .model-table td { padding: 10px 12px; border-bottom: 0.5px solid #f0f0f0; color: #444; }
+  .model-table tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #111; color: #fff; }
+
+  /* Code block */
+  .code-block {
+    background: #f6f6f6; border: 0.5px solid #e8e8e8;
+    border-radius: 8px; padding: 16px 20px;
+    font-family: 'Courier New', monospace; font-size: 13px;
+    color: #333; margin-top: 12px; overflow-x: auto;
+  }
+
+  /* File list */
+  .file-list { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .file-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px; border: 0.5px solid #e4e4e4;
+    border-radius: 8px; background: #fff; font-size: 13px;
+    transition: border-color 0.2s;
+  }
+  .file-item:hover { border-color: #bbb; }
+  .file-name { display: flex; align-items: center; gap: 8px; color: #333; }
+  .file-icon { font-size: 16px; }
+  .file-desc { font-size: 12px; color: #999; }
+  .dl-btn {
+    font-size: 12px; color: #666; padding: 4px 10px;
+    border: 0.5px solid #ddd; border-radius: 4px;
+    background: #fafafa; transition: all 0.15s;
+  }
+  .dl-btn:hover { border-color: #999; color: #111; }
+
+  footer { border-top: 0.5px solid #e8e8e8; text-align: center; padding: 32px 2rem; font-size: 13px; color: #bbb; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Uyên Nguyen</span>
+  <a href="../index.html" class="back">← Back to portfolio</a>
+</nav>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="project-header">
+    <p class="project-tag">Machine Learning · Risk Management</p>
+    <h1>Credit Scoring: Predicting Monthly Default Probability</h1>
+    <p>An end-to-end credit scoring and loss optimization tool for credit card default risk, designed to be accessible to both technical and non-technical users.</p>
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">XGBoost</span>
+      <span class="tag">Random Forest</span>
+      <span class="tag">Neural Network</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">Pandas</span>
+      <span class="tag">Scikit-learn</span>
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="action-links">
+    <a href="Credit_Scoring.html" class="btn btn-primary">📓 View Notebook</a>
+    <a href="Credit_Scoring.ipynb" download class="btn btn-outline">⬇ Download .ipynb</a>
+    <a href="UI_Tool.py" download class="btn btn-outline">⬇ Download UI Tool</a>
+    <a href="requirements.txt" download class="btn btn-outline">⬇ Requirements</a>
+  </div>
+
+  <!-- Video -->
+  <div class="video-section">
+    <!--
+      OPTION A — Local video (under 50MB): replace "demo.mp4" with your file name
+      OPTION B — YouTube: delete the <video> block and uncomment the <iframe> below
+    -->
+    <div class="video-wrap">
+      <video controls>
+        <source src="demo.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <!-- YouTube embed — uncomment and replace YOUR_VIDEO_ID:
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+      -->
+    </div>
+    <p class="video-caption">Demo: UI Tool walkthrough — predicting default probability for individual customers</p>
+  </div>
+
+  <hr />
+
+  <!-- Overview -->
+  <div class="section">
+    <h2>Overview</h2>
+    <p>This project develops an end-to-end credit scoring and loss optimization tool for credit card default risk. It combines machine learning model development, expected loss analysis, and an interactive UI — making the results accessible to both technical and non-technical users.</p>
+  </div>
+
+  <hr />
+
+  <!-- Model Selection -->
+  <div class="section">
+    <h2>Model Selection</h2>
+    <p>Three machine learning models were evaluated and benchmarked against each other using F1 score and recall on the default class.</p>
+    <table class="model-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>F1 Score</th>
+          <th>Recall (Default)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>XGBoost</td>
+          <td>—</td>
+          <td>—</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Random Forest</td>
+          <td>—</td>
+          <td>—</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Neural Network</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge">Selected</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px; font-size:13px; color:#999;">Fill in your actual scores from the notebook.</p>
+  </div>
+
+  <hr />
+
+  <!-- Expected Loss -->
+  <div class="section">
+    <h2>Expected Loss Analysis</h2>
+    <p>Using the default probabilities from the Neural Network, the project constructs a distribution of expected losses across the customer portfolio. Tail risk is quantified at the 95th and 99th percentiles, and mitigation strategies are proposed and evaluated based on their effectiveness in reducing these concentrations.</p>
+  </div>
+
+  <hr />
+
+  <!-- UI Tool -->
+  <div class="section">
+    <h2>UI Tool</h2>
+    <p>The project is finalized as an interactive interface built with Streamlit, allowing non-technical users to query the default probability of individual customers within a few clicks.</p>
+    <p>To launch the tool locally:</p>
+    <div class="code-block">streamlit run UI_Tool.py</div>
+  </div>
+
+  <hr />
+
+  <!-- Files -->
+  <div class="section">
+    <h2>Project Files</h2>
+    <div class="file-list">
+      <div class="file-item">
+        <div class="file-name">
+          <span class="file-icon">📓</span>
+          <div>
+            <div>Credit_Scoring.ipynb</div>
+            <div class="file-desc">Full analysis notebook</div>
+          </div>
+        </div>
+        <a href="Credit_Scoring.ipynb" download class="dl-btn">Download</a>
+      </div>
+      <div class="file-item">
+        <div class="file-name">
+          <span class="file-icon">🐍</span>
+          <div>
+            <div>UI_Tool.py</div>
+            <div class="file-desc">Streamlit interface</div>
+          </div>
+        </div>
+        <a href="UI_Tool.py" download class="dl-btn">Download</a>
+      </div>
+      <div class="file-item">
+        <div class="file-name">
+          <span class="file-icon">🧠</span>
+          <div>
+            <div>nn_model.keras</div>
+            <div class="file-desc">Trained Neural Network model</div>
+          </div>
+        </div>
+        <a href="nn_model.keras" download class="dl-btn">Download</a>
+      </div>
+      <div class="file-item">
+        <div class="file-name">
+          <span class="file-icon">⚙️</span>
+          <div>
+            <div>preprocessing.pkl</div>
+            <div class="file-desc">Preprocessing pipeline</div>
+          </div>
+        </div>
+        <a href="preprocessing.pkl" download class="dl-btn">Download</a>
+      </div>
+      <div class="file-item">
+        <div class="file-name">
+          <span class="file-icon">📄</span>
+          <div>
+            <div>requirements.txt</div>
+            <div class="file-desc">Python dependencies</div>
+          </div>
+        </div>
+        <a href="requirements.txt" download class="dl-btn">Download</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 Uyên Nguyen · uyennguyen.de</footer>
+
+</body>
+</html>
