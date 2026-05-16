@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)file:///C:/Users/nguye/Downloads/portfolio_preview.html#contact -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uyên Nguyen — Portfolio</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #fafafa; color: #1a1a1a; line-height: 1.7; font-size: 16px; }
+  a { color: inherit; text-decoration: none; }
+
+  nav { position: sticky; top: 0; background: rgba(250,250,250,0.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid #e0e0e0; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 56px; z-index: 100; }
+  nav .logo { font-size: 15px; font-weight: 500; letter-spacing: -0.3px; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a { font-size: 14px; color: #666; transition: color 0.2s; }
+  nav ul a:hover { color: #1a1a1a; }
+
+  section { padding: 80px 2rem; max-width: 760px; margin: 0 auto; }
+
+  /* Hero */
+  #hero { padding-top: 100px; padding-bottom: 80px; }
+  .hero-tag { font-size: 13px; color: #888; letter-spacing: 0.5px; margin-bottom: 16px; }
+  #hero h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 500; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 20px; color: #111; }
+  #hero h1 span { color: #bbb; }
+  #hero p { font-size: 17px; color: #555; max-width: 520px; margin-bottom: 32px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+  .btn-primary { background: #111; color: #fff; }
+  .btn-primary:hover { background: #333; }
+  .btn-outline { border: 0.5px solid #ccc; color: #333; background: transparent; }
+  .btn-outline:hover { border-color: #999; background: #f5f5f5; }
+
+  /* Divider */
+  .divider { border: none; border-top: 0.5px solid #e8e8e8; margin: 0 auto; max-width: 760px; }
+
+  /* About */
+  .section-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; margin-bottom: 24px; }
+  #about p { font-size: 16px; color: #444; margin-bottom: 14px; max-width: 600px; }
+  .skills-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .skill-tag { font-size: 12px; padding: 5px 12px; border: 0.5px solid #ddd; border-radius: 20px; color: #555; background: #fff; }
+
+  /* Projects */
+  #projects h2 { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; margin-bottom: 32px; }
+  .project-card { border: 0.5px solid #e4e4e4; border-radius: 10px; padding: 24px 28px; background: #fff; margin-bottom: 16px; transition: border-color 0.2s, box-shadow 0.2s; }
+  .project-card:hover { border-color: #bbb; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+  .project-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .project-title { font-size: 16px; font-weight: 500; color: #111; }
+  .project-link { font-size: 13px; color: #999; display: flex; align-items: center; gap: 4px; transition: color 0.2s; }
+  .project-link:hover { color: #333; }
+  .project-desc { font-size: 14px; color: #666; margin-bottom: 16px; line-height: 1.6; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ptag { font-size: 11px; padding: 3px 10px; background: #f3f3f3; border-radius: 4px; color: #777; }
+  .video-thumb { width: 100%; height: 160px; background: #f0f0f0; border-radius: 6px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; border: 0.5px solid #e8e8e8; }
+  .play-btn { width: 40px; height: 40px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .play-btn::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 7px 0 7px 13px; border-color: transparent transparent transparent #fff; margin-left: 3px; }
+
+  /* Contact */
+  #contact h2 { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; margin-bottom: 24px; }
+  #contact p { font-size: 16px; color: #555; margin-bottom: 28px; max-width: 480px; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #555; padding: 12px 16px; border: 0.5px solid #e4e4e4; border-radius: 8px; background: #fff; transition: border-color 0.2s; width: fit-content; min-width: 240px; }
+  .contact-link:hover { border-color: #bbb; color: #111; }
+  .contact-icon { width: 18px; height: 18px; opacity: 0.5; }
+
+  footer { border-top: 0.5px solid #e8e8e8; text-align: center; padding: 32px 2rem; font-size: 13px; color: #bbb; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Le Hoang Uyen Nguyen - Ivy Nguyen </span>
+  <ul>
+    <li><a href="file:///C:/Users/nguye/Downloads/portfolio_preview.html#about">About</a></li>
+    <li><a href="file:///C:/Users/nguye/Downloads/portfolio_preview.html#projects">Projects</a></li>
+    <li><a href="file:///C:/Users/nguye/Downloads/portfolio_preview.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <p class="hero-tag">Master Student in Business Analytics · Econometrics</p>
+  <h1>Hi, I'm Uyên.<br><span>I turn data into</span><br>clear decisions.</h1>
+  <p>A young professional with a passion for data analysis, visualization, and making complex problems understandable.</p>
+  <div class="hero-btns">
+    <a href="file:///C:/Users/nguye/Downloads/portfolio_preview.html#projects" class="btn btn-primary">View my work</a>
+    <a href="file:///C:/Users/nguye/Downloads/portfolio_preview.html#contact" class="btn btn-outline">Get in touch</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="about">
+  <p class="section-label">About</p>
+  <p>I'm a young professional with an MSc in Business Analytics and Econometrics at University of Cologne. I enjoy working at the intersection of data, finance, and decision-making.</p>
+  <p>Beside building models or analyzing data, I'm also exploring new tools in Python and Jupyter to visualize patterns that aren't immediately obvious and developing a friendly user interface for non-technical users to have access to the tools.</p>
+  <div class="skills-row">
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">Jupyter</span>
+    <span class="skill-tag">Risk Modeling</span>
+    <span class="skill-tag">Data Analysis</span>
+    <span class="skill-tag">SQL</span>
+    <span class="skill-tag">Pandas</span>
+    <span class="skill-tag">Visualization</span>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="project-card">
+    <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="project-card-top">
+      <span class="project-title">Your Project Title Here</span>
+      <a href="file:///C:/Users/nguye/Downloads/portfolio_preview.html#" class="project-link">View notebook ↗</a>
+    </div>
+    <p class="project-desc">A short description of what this project does, what problem it solves, and what you found. Keep it to 2–3 sentences.</p>
+    <div class="project-tags">
+      <span class="ptag">Python</span>
+      <span class="ptag">Jupyter</span>
+      <span class="ptag">Pandas</span>
+      <span class="ptag">Matplotlib</span>
+    </div>
+  </div>
+
+</section>
+
+<hr class="divider">
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Interested in working together or just want to say hi? I'd love to hear from you.</p>
+  <div class="contact-links">
+    <a href="file:///C:/Users/nguye/Downloads/nguyenlehoanguyen11@gmail.com" class="contact-link">
+      <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+      Email
+    </a>
+    <a href="https://www.linkedin.com/in/le-hoang-uyen-nguyen-34340a260/" class="contact-link">
+      <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2" stroke-width="1.5"></circle></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/uyenlee2111-ai" class="contact-link">
+      <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"></path></svg>
+      GitHub
+    </a>
+  </div>
+</section>
+
+<footer>© 2026 Le Hoang Uyen Nguyen · uyennguyen.de</footer>
+
+
+
+</body></html>
