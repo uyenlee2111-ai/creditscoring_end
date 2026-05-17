@@ -158,13 +158,14 @@
   <!-- Model Selection -->
   <div class="section">
     <h2>Model Selection</h2>
-    <p>Three machine learning models were evaluated and benchmarked against each other using F1 score and recall on the default class.</p>
+    <p>Three machine learning models were evaluated and benchmarked against each other using ROC-AUC, F1 score and recall on the default class.</p>
     <table class="model-table">
       <thead>
         <tr>
           <th>Model</th>
           <th>F1 Score</th>
           <th>Recall (Default)</th>
+          <th>ROC-AUC (validation)</th>
           <th></th>
         </tr>
       </thead>
@@ -173,18 +174,21 @@
           <td>XGBoost</td>
           <td>0.46</td>
           <td>0.42</td>
+          <td>0.75</td>
           <td></td>
         </tr>
         <tr>
           <td>Random Forest</td>
           <td>0.48</td>
           <td>0.51</td>
+          <td>0.76</td>
           <td></td>
         </tr>
         <tr>
           <td>Neural Network</td>
           <td>0.51</td>
           <td>0.62</td>
+          <td>0.79</td>
           <td><span class="badge">Selected</span></td>
         </tr>
       </tbody>
