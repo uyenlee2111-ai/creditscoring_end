@@ -107,7 +107,7 @@
   </div>
 
   <div class="action-links">
-    <a href="NLSAA_loneliness_DML_multivalued_notebook.html" class="btn btn-primary">📓 Open Notebook</a>
+    <a href="NLSAA_loneliness_DML_multivalued_notebook.ipynb" class="btn btn-primary">📓 Open Notebook</a>
     <a href="NLSAA_loneliness_DML_multivalued_notebook.ipynb" download="" class="btn btn-outline">⬇ Download .ipynb</a>
   </div>
 
@@ -128,17 +128,6 @@
       <strong>Reference level:</strong> loneliness level 1<br>
       <strong>Sample used for analysis:</strong> 1,151 observations
     </div>
-    <ul>
-      <p>Scale Directionality:
-        <ul>
-          <li>0 = Always (Highest loneliness exposure)</li>
-          <li>1 = Most of the time</li>
-          <li>2 = Often</li>
-          <li>3 = Sometimes</li>
-          <li>4 = Never / Rarely (Lowest loneliness exposure)</li>
-        </ul>
-      </li>
-    </ul>
     <p style="margin-top:12px;">The DML models use <code>discrete_treatment=True</code>, so the treatment is treated categorically rather than assuming that the change from one loneliness level to the next is constant.</p>
   </div>
 
@@ -169,7 +158,23 @@
   <div class="section">
     <h2>Key Findings</h2>
     <p>Extreme loneliness significantly increases the likelihood of depression and anxiety by 35% to 50%. Because the baseline is extreme loneliness, the analysis does not focus on changes between the other loneliness levels (e.g., 2 vs. 3 or 3 vs. 4) using Random Forest DML, XGBoost DML, or Lasso DML.</p>
-    <p>The OLS benchmark indicates that a one-level increase in loneliness significantly increases the likelihood of depression and anxiety in average by approximately <strong>4.68%</strong>.</p>
+    <p>The OLS benchmark indicates that a one-level increase in loneliness significantly increases the likelihood of depression and anxiety by approximately <strong>4.68%</strong>.</p>
+  </div>
+
+
+  <hr>
+
+  <div class="section">
+    <h2>Estimated Average Treatment Effects</h2>
+    <p>The table below reports the estimated average treatment effects (ATE) relative to loneliness level 1. The estimates are shown for Random Forest DML, XGBoost DML, Lasso DML, Causal Forest DML, and the stratified ATE with Matching.</p>
+    <table class="comparison-table">
+      <thead><tr><th>Comparison</th><th>RF ATE</th><th>XGB ATE</th><th>Lasso ATE</th><th>Causal Forest DML ATE</th><th>Stratified ATE</th></tr></thead>
+      <tbody>
+        <tr><td>2 vs 1</td><td>-0.416942</td><td>-0.378268</td><td>-0.411136</td><td>-0.335887</td><td>-0.405208</td></tr>
+        <tr><td>3 vs 1</td><td>-0.490936</td><td>-0.485662</td><td>-0.488229</td><td>-0.371851</td><td>-0.455086</td></tr>
+        <tr><td>4 vs 1</td><td>-0.352334</td><td>-0.345495</td><td>-0.345586</td><td>-0.261117</td><td>-0.343475</td></tr>
+      </tbody>
+    </table>
   </div>
 
   <hr>
