@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loneliness & Mental Health — Le Hoang Uyen Nguyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./credit_scoring_page_files/css2" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #fafafa; color: #1a1a1a; line-height: 1.7; font-size: 16px; }
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: sticky; top: 0;
+      background: rgba(250,250,250,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid #e0e0e0;
+      padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 56px; z-index: 100;
+    }
+    nav .logo { font-size: 15px; font-weight: 500; letter-spacing: -0.3px; }
+    nav .back { font-size: 14px; color: #888; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    nav .back:hover { color: #111; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 60px 2rem 80px; }
+
+    .project-header { margin-bottom: 48px; }
+    .project-tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; margin-bottom: 16px; }
+    .project-header h1 { font-size: clamp(24px, 5vw, 38px); font-weight: 500; letter-spacing: -1px; line-height: 1.2; color: #111; margin-bottom: 16px; }
+    .project-header p { font-size: 17px; color: #555; max-width: 620px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+    .tag { font-size: 12px; padding: 4px 12px; border: 0.5px solid #ddd; border-radius: 20px; color: #555; background: #fff; }
+
+    .action-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 500; transition: all 0.15s; font-family: inherit; }
+    .btn-primary { background: #111; color: #fff; border: none; }
+    .btn-primary:hover { background: #333; }
+    .btn-outline { border: 0.5px solid #ccc; color: #333; background: transparent; }
+    .btn-outline:hover { border-color: #999; background: #f5f5f5; }
+
+    hr { border: none; border-top: 0.5px solid #e8e8e8; margin: 40px 0; }
+
+    .section { margin-bottom: 40px; }
+    .section h2 { font-size: 18px; font-weight: 500; color: #111; margin-bottom: 12px; }
+    .section p { font-size: 15px; color: #444; margin-bottom: 12px; line-height: 1.75; }
+    .section ul { margin: 8px 0 12px 20px; color: #444; font-size: 15px; }
+    .section li { margin-bottom: 6px; }
+
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 16px; }
+    .comparison-table th { text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; color: #888; border-bottom: 0.5px solid #e0e0e0; padding: 8px 12px; }
+    .comparison-table td { padding: 10px 12px; border-bottom: 0.5px solid #f0f0f0; color: #444; }
+
+    .highlight {
+      background: #f6f6f6; border: 0.5px solid #e8e8e8;
+      border-radius: 8px; padding: 16px 20px; margin-top: 12px;
+      font-size: 14px; color: #444;
+    }
+
+    .file-list { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+    .file-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; border: 0.5px solid #e4e4e4;
+      border-radius: 8px; background: #fff; font-size: 13px;
+      transition: border-color 0.2s;
+    }
+    .file-item:hover { border-color: #bbb; }
+    .file-name { display: flex; align-items: center; gap: 8px; color: #333; }
+    .file-icon { font-size: 16px; }
+    .file-desc { font-size: 12px; color: #999; }
+    .dl-btn {
+      font-size: 12px; color: #666; padding: 4px 10px;
+      border: 0.5px solid #ddd; border-radius: 4px;
+      background: #fafafa; transition: all 0.15s;
+    }
+    .dl-btn:hover { border-color: #999; color: #111; }
+
+    footer { border-top: 0.5px solid #e8e8e8; text-align: center; padding: 32px 2rem; font-size: 13px; color: #bbb; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Le Hoang Uyen Nguyen</span>
+  <a href="../index.html" class="back">← Back to portfolio</a>
+</nav>
+
+<div class="container">
+
+  <div class="project-header">
+    <p class="project-tag">Causal Inference · Data Analysis</p>
+    <h1>Loneliness & Mental Health: Multivalued DML</h1>
+    <p>A causal inference analysis of the relationship between loneliness and depression/anxiety outcomes using multivalued Double Machine Learning (DML).</p>
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">Jupyter</span>
+      <span class="tag">Double Machine Learning</span>
+      <span class="tag">Random Forest</span>
+      <span class="tag">XGBoost</span>
+      <span class="tag">Lasso</span>
+      <span class="tag">Causal Forest</span>
+      <span class="tag">NLSAA</span>
+    </div>
+  </div>
+
+  <div class="action-links">
+    <a href="NLSAA_loneliness_DML_multivalued_notebook.html" class="btn btn-primary">📓 Open Notebook</a>
+    <a href="NLSAA_loneliness_DML_multivalued_notebook.ipynb" download="" class="btn btn-outline">⬇ Download .ipynb</a>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <h2>Research Question</h2>
+    <p>The project estimates the causal relationship/effect of <strong>loneliness (<code>lonely</code>)</strong> on <strong><code>psych_85</code></strong>, adjusting for observed confounders.</p>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <h2>Treatment Design</h2>
+    <p>The loneliness score is treated as an ordinal, multi-valued discrete treatment. There is only one observation with <code>lonely = 0</code>, so this observation is removed before estimation.</p>
+    <div class="highlight">
+      <strong>Estimated treatment levels:</strong> 1, 2, 3, and 4<br>
+      <strong>Reference level:</strong> loneliness level 1<br>
+      <strong>Sample used for analysis:</strong> 1,151 observations
+    </div>
+    <p style="margin-top:12px;">The DML models use <code>discrete_treatment=True</code>, so the treatment is treated categorically rather than assuming that the change from one loneliness level to the next is constant.</p>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <h2>Methodology</h2>
+    <p>The notebook compares several causal machine-learning approaches while using the same observed confounders:</p>
+    <ul>
+      <li>OLS as a linear benchmark</li>
+      <li>Random Forest DML</li>
+      <li>XGBoost DML</li>
+      <li>Lasso DML</li>
+      <li>Causal Forest as a sensitivity analysis for heterogeneous treatment effects</li>
+    </ul>
+    <p>The main DML comparisons are <strong>2 vs 1</strong>, <strong>3 vs 1</strong>, and <strong>4 vs 1</strong>, with 95% confidence intervals.</p>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <h2>Confounders</h2>
+    <p>The analysis adjusts for observed demographic, socioeconomic, health, medication, mobility, and lifestyle-related variables, including age, sex, marital status, socioeconomic status, health indicators, smoking, medication, job status, walking and shopping minutes, mobility, and weight category.</p>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <h2>Key Findings</h2>
+    <p>Extreme loneliness significantly increases the likelihood of depression and anxiety by 35% to 50%. Because the baseline is extreme loneliness, the analysis does not focus on changes between the other loneliness levels (e.g., 2 vs. 3 or 3 vs. 4) using Random Forest DML, XGBoost DML, or Lasso DML.</p>
+    <p>The OLS benchmark indicates that a one-level increase in loneliness significantly increases the likelihood of depression and anxiety by approximately <strong>4.68%</strong>.</p>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <h2>Limitations</h2>
+    <p>Because there is only one observation at loneliness level 0, it is excluded to avoid estimating a treatment category from a single observation. The relatively small analysis sample of 1,151 observations may also limit the generalizability of the findings.</p>
+    <p>Future analyses could additionally consider factors such as social interaction, time spent alone, physical activity, sleep quality, workload, living situation, and financial stress.</p>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <h2>Project File</h2>
+    <div class="file-list">
+      <div class="file-item">
+        <div class="file-name">
+          <span class="file-icon">📓</span>
+          <div>
+            <div>NLSAA_loneliness_DML_multivalued_notebook.ipynb</div>
+            <div class="file-desc">Full multivalued DML analysis notebook</div>
+          </div>
+        </div>
+        <a href="NLSAA_loneliness_DML_multivalued_notebook.ipynb" download="" class="dl-btn">Download</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 Le Hoang Uyen Nguyen · uyennguyen.de</footer>
+
+</body>
+</html>
