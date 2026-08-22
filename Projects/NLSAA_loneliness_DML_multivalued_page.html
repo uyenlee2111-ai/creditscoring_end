@@ -114,56 +114,72 @@
   <hr>
 
   <div class="section">
-    <h2>Research Question</h2>
+    <h3>Research Question</h3>
     <p>The project estimates the causal relationship/effect of <strong>loneliness (<code>lonely</code>)</strong> on <strong><code>psych_85</code></strong>, adjusting for observed confounders.</p>
   </div>
 
+
   <hr>
 
+
   <div class="section">
-    <h2>Treatment Design</h2>
-    <p>The loneliness score is treated as an ordinal, multi-valued discrete treatment. There is only one observation with <code>lonely = 0</code>, so this observation is removed before estimation.</p>
-    <div class="highlight">
-      <strong>Estimated treatment levels:</strong> 1, 2, 3, and 4<br>
-      <strong>Reference level:</strong> loneliness level 1<br>
-      <strong>Sample used for analysis:</strong> 1,151 observations
+    <div class="section">
+      <h3>Analysis Overview</h3>
+      <p>The analysis uses the <strong>National Longitudinal Study of Adolescent to Adult Health (NLSAA)</strong> dataset, which includes 1,152 observations of individuals aged 50 and above. The outcome variable is a binary indicator of depression and/or anxiety, while the treatment variable is an ordinal measure of loneliness with four levels.</p>
     </div>
-    <p> Scale Directionality:
-      <div>0 = Always (Highest loneliness exposure)
-      <div>1 = Most of the time
-      <div>2 = Often
-      <div>3 = Sometimes
-      <div>4 = Never / Rarely (Lowest loneliness exposure)
+    <div class="section">
+      <h2>Outcome Definition</h2>
+      <p>The outcome variable <code>psych_85</code> indicates whether an observation reports depression and/or anxiety. Observations with <code>psych_85 = 1</code> are classified as <strong>positive</strong>, indicating depression and/or anxiety, while observations with <code>psych_85 = 0</code> are classified as <strong>negative</strong>, indicating no depression or anxiety.</p>
     </div>
-    <p style="margin-top:12px;">The DML models use <code>discrete_treatment=True</code>, so the treatment is treated categorically rather than assuming that the change from one loneliness level to the next is constant.</p>
+    <div class="section">
+      <h2>Treatment Design</h2>
+      <p>The loneliness score is treated as an ordinal, multi-valued discrete treatment. There is only one observation with <code>lonely = 0</code>, so this observation is removed before estimation.</p>
+      <div class="highlight">
+        <strong>Estimated treatment levels:</strong> 1, 2, 3, and 4<br>
+        <strong>Reference level:</strong> loneliness level 1<br>
+        <strong>Sample used for analysis:</strong> 1,151 observations
+      </div>
+      <p> Scale Directionality:
+        <div>0 = Always (Highest loneliness exposure)
+        <div>1 = Most of the time
+        <div>2 = Often
+        <div>3 = Sometimes
+        <div>4 = Never / Rarely (Lowest loneliness exposure)
+      </div>
+      <p style="margin-top:12px;">The DML models use <code>discrete_treatment=True</code>, so the treatment is treated categorically rather than assuming that the change from one loneliness level to the next is constant.</p>
+    </div>
+    <div class="section">
+      <h2>Confounders</h2>
+      <p>The analysis adjusts for observed demographic, socioeconomic, health, medication, mobility, and lifestyle-related variables, including age, sex, marital status, socioeconomic status, health indicators, smoking, medication, job status, walking and shopping minutes, mobility, and weight category.</p>
+  </div>
   </div>
 
   <hr>
 
   <div class="section">
-    <h2>Methodology</h2>
-    <p>The notebook compares several causal machine-learning approaches while using the same observed confounders:</p>
-    <ul>
-      <li>OLS as a linear benchmark</li>
-      <li>Random Forest DML</li>
-      <li>XGBoost DML</li>
-      <li>Lasso DML</li>
-      <li>Causal Forest as a sensitivity analysis for heterogeneous treatment effects</li>
-    </ul>
-    <p>The main DML comparisons are <strong>2 vs 1</strong>, <strong>3 vs 1</strong>, and <strong>4 vs 1</strong>, with 95% confidence intervals.</p>
+    <div class="section">
+      <h3>Methodology</h3>
+      <p>The notebook compares several causal machine-learning approaches while using the same observed confounders:</p>
+      <ul>
+        <li>OLS as a linear benchmark</li>
+        <li>Random Forest DML</li>
+        <li>XGBoost DML</li>
+        <li>Lasso DML</li>
+        <li>Causal Forest as a sensitivity analysis for heterogeneous treatment effects</li>
+      </ul>
+      <p>The main DML comparisons are <strong>2 vs 1</strong>, <strong>3 vs 1</strong>, and <strong>4 vs 1</strong>, with 95% confidence intervals.</p>
+    </div>
+    <div class="section">
+      <h2>DML</h2>
+      <p>Double Machine Learning (DML) estimates the causal effect of loneliness while controlling for observed confounders. It first uses machine-learning models to predict the treatment and the outcome from the confounders, removes these predicted components, and then estimates the remaining relationship between loneliness and the outcome.</p>
+      <p>Random Forest, XGBoost, and Lasso are integrated as alternative machine-learning methods for these prediction steps. Random Forest and XGBoost can capture nonlinear relationships, while Lasso provides a regularized linear benchmark. The estimated effects are compared with OLS, Causal Forest DML, and the stratified ATE with matching as complementary approaches and robustness checks.</p>
+    </div>
   </div>
 
   <hr>
 
   <div class="section">
-    <h2>Confounders</h2>
-    <p>The analysis adjusts for observed demographic, socioeconomic, health, medication, mobility, and lifestyle-related variables, including age, sex, marital status, socioeconomic status, health indicators, smoking, medication, job status, walking and shopping minutes, mobility, and weight category.</p>
-  </div>
-
-  <hr>
-
-  <div class="section">
-    <h2>Key Findings</h2>
+    <h3>Key Findings</h3>
     <p>Extreme loneliness significantly increases the likelihood of depression and anxiety by 35% to 50%. Because the baseline is extreme loneliness, the analysis does not focus on changes between the other loneliness levels (e.g., 2 vs. 3 or 3 vs. 4) using Random Forest DML, XGBoost DML, or Lasso DML.</p>
     <p>The OLS benchmark indicates that a one-level increase in loneliness significantly increases the likelihood of depression and anxiety by approximately <strong>4.68%</strong>.</p>
   </div>
@@ -172,7 +188,7 @@
   <hr>
 
   <div class="section">
-    <h2>Estimated Average Treatment Effects</h2>
+    <h3>Estimated Average Treatment Effects</h3>
     <p>The table below reports the estimated average treatment effects (ATE) relative to loneliness level 1. The estimates are shown for Random Forest DML, XGBoost DML, Lasso DML, Causal Forest DML, and the stratified ATE with Matching.</p>
     <table class="comparison-table">
       <thead><tr><th>Comparison</th><th>RF ATE</th><th>XGB ATE</th><th>Lasso ATE</th><th>Causal Forest DML ATE</th><th>Stratified ATE</th></tr></thead>
@@ -187,7 +203,7 @@
   <hr>
 
   <div class="section">
-    <h2>Limitations</h2>
+    <h3>Limitations</h3>
     <p>Because there is only one observation at loneliness level 0, it is excluded to avoid estimating a treatment category from a single observation. The relatively small analysis sample of 1,151 observations may also limit the generalizability of the findings.</p>
     <p>Future analyses could additionally consider factors such as social interaction, time spent alone, physical activity, sleep quality, workload, living situation, and financial stress.</p>
   </div>
@@ -195,7 +211,7 @@
   <hr>
 
   <div class="section">
-    <h2>Project File</h2>
+    <h3>Project File</h3>
     <div class="file-list">
       <div class="file-item">
         <div class="file-name">
